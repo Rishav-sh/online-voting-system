@@ -21,7 +21,7 @@ import java.util.Map;
 public class AdminController {
 
     @Autowired
-    private ElectionService electionServdeice;
+    private ElectionService electionService;
 
     // POST /api/admin/elections — Create a new election
     @PostMapping("/elections")
@@ -58,13 +58,5 @@ public class AdminController {
     public ResponseEntity<?> getAllElections() {
         List<ElectionResponse> elections = electionService.getAllElections();
         return ResponseEntity.ok(elections);
-    }
-
-    public ElectionService getElectionServdeice() {
-        return electionServdeice;
-    }
-
-    public void setElectionServdeice(ElectionService electionServdeice) {
-        this.electionServdeice = electionServdeice;
     }
 }
