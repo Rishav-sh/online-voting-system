@@ -9,10 +9,28 @@ services:
     envVars:
       - key: PORT
         value: 8080
-      - key: DATABASE_URL
+      - key: DB_HOST
         fromDatabase:
           name: voting-db
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: voting-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: voting-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: voting-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: voting-db
+          property: password
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
       - key: DATABASE_DRIVER
         value: org.postgresql.Driver
       - key: DATABASE_PLATFORM
