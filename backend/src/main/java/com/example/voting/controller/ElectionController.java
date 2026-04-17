@@ -1,7 +1,6 @@
 package com.example.voting.controller;
 
 import com.example.voting.dto.*;
-import com.example.voting.models.Vote;
 import com.example.voting.service.ElectionService;
 import com.example.voting.service.VoteService;
 import jakarta.validation.Valid;

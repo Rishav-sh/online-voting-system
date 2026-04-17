@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: voting-backend
+    env: docker
+    dockerContext: backend
+    dockerfilePath: Dockerfile
+    plan: free
+    region: singapore
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: DATABASE_URL
+        fromDatabase:
+          name: voting-db
+          property: connectionString
+      - key: DATABASE_DRIVER
+        value: org.postgresql.Driver
+      - key: DATABASE_PLATFORM
+        value: org.hibernate.dialect.PostgreSQLDialect
+      - key: JWT_SECRET
+        generateValue: true
+
+databases:
+  - name: voting-db
+    plan: free
+    region: singapore
+    databaseName: votingdb
+    user: votinguser
